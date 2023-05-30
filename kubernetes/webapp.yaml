@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xyz-flask
+  labels:
+    app: xyz-flask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: xyz-flask
+  template:
+    metadata:
+      labels:
+        app: xyz-flask
+    spec:
+      containers:
+      - name: xyz-flask-webapp
+        image: REPLACE_ME
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "256m"
+        ports:
+          - containerPort: 8080
